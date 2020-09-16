@@ -1,8 +1,5 @@
 <template>
   <li>
-    <strong v-if="isCurrentUser">{{ message.user.username }}</strong>
-    <em v-else>{{ message.user.username }}</em>
-    : {{ message.text }}
   </li>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UsersList :users="store.users" />
+    <!-- <UsersList :users="store.users" /> -->
     <MessagesList :messages="store.messages" />
     <MessageBox @sendMessage="onSendMessage" />
   </div>
