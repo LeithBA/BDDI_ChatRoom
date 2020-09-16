@@ -1,7 +1,10 @@
 <template>
-  <ul>
-    <MessagesListMessage v-for="(message, i) in messages" :key="i" :message="message" />
-  </ul>
+  <div>
+    <h3> Chat </h3>
+    <ul>
+      <MessagesListMessage v-for="(message, i) in messages" :key="i" :message="message" />
+    </ul>
+  </div>
 </template>
 
 <script>
