@@ -7,11 +7,11 @@
 <script>
 export default {
   props: {
-    user: { type: Object, required: true },
+    user: { type: Object, required: true }
   },
 
-  data() {
-    return {};
-  },
-};
+  data () {
+    return {}
+  }
+}
 </script>
