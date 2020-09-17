@@ -10,7 +10,7 @@
 
       <div id="boxGroup">
         <div id="lever">
-          <button id="ball"></button>
+          <button id="ball" v-on:click="onLeverPull()"></button>
           <div id="rod"></div>
         </div>
         <MessagesList :messages="store.messages" id="messagesList" />
@@ -36,6 +36,14 @@ export default {
   methods: {
     onSendMessage (text) {
       store.messageNew(text)
+    },
+    onLeverPull () {
+      var lever = document.getElementById('lever')
+
+      lever.classList.add('animate')
+      setTimeout(function () {
+        lever.classList.remove('animate')
+      }, 1000)
     }
   },
   components: {
@@ -76,18 +84,17 @@ export default {
 
 #usersList {
   position: relative;
-  top: 5vh;
+  top: 5.3vh;
+  left: 0.5vh;
   padding-top: 5%;
   padding-bottom: 5%;
   padding-left: 5%;
   padding-right: 5%;
   height: 40vh;
-  width: 20%;
+  width: 19%;
   color: #202020;
   background: rgb(243, 243, 243);
   clip-path: polygon(12% 8%, 90% 4%, 100% 100%, 0% 100%);
-  border-style: solid;
-  border-color: rgb(0, 0, 0);
 }
 
 #usersListBehind {
@@ -99,7 +106,8 @@ export default {
   padding-right: 5%;
   height: 40vh;
   width: 20%;
-  color: #ff00d4;
+  background: #a7a7a7;
+  clip-path: polygon(12% 8%, 90% 4%, 100% 100%, 0% 100%);
 }
 
 #platform {
@@ -161,5 +169,23 @@ export default {
   background: rgb(78, 78, 78);
   border-radius: 50%;
   z-index: 1;
+  border: 0;
+}
+
+@keyframes rotateLever {
+  0% {
+    transform: rotate(20deg);
+  }
+  35% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
+
+.animate {
+  animation: rotateLever;
+  animation-duration: 400ms;
 }
 </style>

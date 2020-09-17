@@ -28,7 +28,9 @@ const store = new Vue({
       socket.on('connect', () => {
         const sessionUser = sessionStorage.getItem('user')
 
-        if (sessionUser) { store.userRegister(JSON.parse(sessionUser).username) }
+        if (sessionUser) {
+          store.userRegister(JSON.parse(sessionUser).username)
+        }
       })
 
       socket.on('disconnect', () => {
@@ -67,8 +69,8 @@ const store = new Vue({
     },
 
     // API CALLS
-    userRegister (username) {
-      socket.emit('user register', { username })
+    userRegister (username, color) {
+      socket.emit('user register', { username, color })
     },
     userTyping () { },
     messageNew (message) {
