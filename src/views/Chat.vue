@@ -1,9 +1,20 @@
 <template>
   <div id="wrapper">
-    <UsersList :users="store.users" id="usersList" />
+    <div id="usersPanel">
+      <div id="usersListBehind" />
+      <UsersList :users="store.users" id="usersList" />
+      <div id="platform" />
+    </div>
     <div id="chatPanel">
-      <MessagesList :messages="store.messages" id="messagesList" />
       <MessageBox @sendMessage="onSendMessage" id="messagesBox" />
+
+      <div id="boxGroup">
+        <div id="lever">
+          <button id="ball"></button>
+          <div id="rod"></div>
+        </div>
+        <MessagesList :messages="store.messages" id="messagesList" />
+      </div>
     </div>
   </div>
 </template>
@@ -37,45 +48,118 @@ export default {
 
 <style lang="scss">
 #wrapper {
-  display: grid;
+  display: flex;
+  padding: 2vh;
+}
 
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
-  height: 100vh;
-  width: 100vh;
-}
 #chatPanel {
-  grid-column: 2 / 4;
-  grid-row: 1 / 3;
+  position: absolute;
+  right: 0;
+  top: 5vh;
+  height: 90vh;
+  width: 68%;
 }
+
+#boxGroup {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#usersPanel {
+  position: absolute;
+  margin: auto;
+  width: 100%;
+  left: 10vh;
+}
+
 #usersList {
-  grid-row: 1 / 3;
-  height: 100vh;
-  width: 15vh;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: left;
+  position: relative;
+  top: 5vh;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  height: 40vh;
+  width: 20%;
   color: #202020;
+  background: rgb(243, 243, 243);
+  clip-path: polygon(12% 8%, 90% 4%, 100% 100%, 0% 100%);
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+}
+
+#usersListBehind {
+  position: absolute;
+  top: 5vh;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  height: 40vh;
+  width: 20%;
+  color: #ff00d4;
+}
+
+#platform {
+  position: relative;
+  width: 30%;
+  height: 5vh;
+  top: 5vh;
+  background: rgb(255, 254, 207);
 }
 #messagesList {
-  height: 90vh;
-  overflow: scroll;
-
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: left;
+  position: absolute;
+  padding-left: 10%;
+  padding-right: 15%;
+  height: 80%;
+  width: 70%;
+  right: 10px;
+  overflow-x: hidden;
   color: #202020;
+  background: #ececec;
+  box-shadow: 10px 5px 5px rgb(150, 150, 150);
+  clip-path: polygon(10% 5%, 90% 4%, 95% 100%, 5% 100%);
 }
 #messagesBox {
-  height: 10vh;
-
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  height: 20%;
+  width: 60%;
+  padding-left: 10%;
+  padding-right: 10%;
+  background: rgb(209, 255, 233);
   text-align: center;
   color: #202020;
+  box-shadow: 10px 5px 5px rgb(248, 248, 248);
+  clip-path: polygon(2% 8%, 100% 0%, 98% 100%, 0% 95%);
+}
+
+#lever {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  top: 60vh;
+  height: 25vh;
+  left: -200px;
+  transform: rotate(20deg);
+}
+#rod {
+  margin: auto;
+  margin-left: 0;
+  width: 500px;
+  height: 2%;
+  background: rgb(78, 78, 78);
+}
+
+#ball {
+  position: relative;
+  cursor: pointer;
+  margin: auto;
+  margin-right: 0;
+  width: 50px;
+  height: 50px;
+  background: rgb(78, 78, 78);
+  border-radius: 50%;
+  z-index: 1;
 }
 </style>

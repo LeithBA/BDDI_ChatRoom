@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3> Chat </h3>
+    <h3>Chat</h3>
     <ul>
       <MessagesListMessage v-for="(message, i) in messages" :key="i" :message="message" />
     </ul>

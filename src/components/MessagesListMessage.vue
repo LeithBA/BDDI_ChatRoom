@@ -23,3 +23,17 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+li {
+  margin: auto;
+  width: max-content;
+  min-width: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  background: rgb(219, 153, 153);
+}
+</style>
