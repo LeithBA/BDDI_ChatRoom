@@ -15,7 +15,10 @@ ul {
   list-style-type: none;
 }
 
-h3,
+h2 {
+  text-align: center;
+  font-family: "Sue Ellen Francisco", cursive;
+}
 h1 {
   text-align: center;
 }
@@ -25,7 +28,7 @@ h1 {
   height: 100vh;
 
   font-family: "Sue Ellen Francisco", cursive;
-  font-size: 1em;
+  font-size: 1.2em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;

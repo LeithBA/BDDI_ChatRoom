@@ -1,21 +1,28 @@
 <template>
   <div>
-    <li>{{user.username}}</li>
+    <li id="userContainer" :style="{ background: color }">{{user.username}}</li>
   </div>
 </template>
 
 <script>
+import store from '../store'
 export default {
+  computed: {
+    color () {
+      return store.colors[this.user.username]
+    }
+  },
   props: {
     user: { type: Object, required: true }
-  },
-
-  data () {
-    return {
-      time: 0,
-      speed: 1,
-      canvas: document.querySelector('canvas')
-    }
   }
 }
 </script>
+
+<style scoped>
+#userContainer {
+  background: black;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+</style>

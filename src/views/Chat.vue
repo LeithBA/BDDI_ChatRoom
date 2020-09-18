@@ -3,6 +3,11 @@
     <div id="usersPanel">
       <div id="usersListBehind" />
       <UsersList :users="store.users" id="usersList" />
+      <div id="usersListFront">
+        <div class="reflection" id="ref1" />
+        <div class="reflection" id="ref2" />
+        <div class="reflection" id="ref3" />
+      </div>
       <div id="platform" />
     </div>
     <div id="chatPanel">
@@ -39,7 +44,7 @@ export default {
     },
     onLeverPull () {
       var lever = document.getElementById('lever')
-
+      store.messages = []
       lever.classList.add('animate')
       setTimeout(function () {
         lever.classList.remove('animate')
@@ -64,8 +69,10 @@ export default {
   position: absolute;
   right: 0;
   top: 5vh;
-  height: 90vh;
+  height: 80vh;
   width: 68%;
+
+  filter: drop-shadow(20px 20px 20px rgba(0, 0, 0, 0.5));
 }
 
 #boxGroup {
@@ -82,6 +89,28 @@ export default {
   left: 10vh;
 }
 
+.reflection {
+  position: relative;
+  background: rgba(255, 255, 255, 0.459);
+  height: 100%;
+  width: 200%;
+  transform: rotate(-20deg);
+  right: 50%;
+}
+
+#ref1 {
+  height: 20px;
+  top: 70%;
+}
+#ref2 {
+  height: 50px;
+  top: 20%;
+}
+#ref3 {
+  height: 15px;
+  top: 25%;
+}
+
 #usersList {
   position: relative;
   top: 5.3vh;
@@ -93,7 +122,32 @@ export default {
   height: 40vh;
   width: 19%;
   color: #202020;
-  background: rgb(243, 243, 243);
+  background: rgb(250, 250, 250);
+  clip-path: polygon(12% 8%, 90% 4%, 100% 100%, 0% 100%);
+}
+
+#usersListBehind {
+  position: absolute;
+  top: 5vh;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  height: 40vh;
+  width: 20%;
+  background: #a7a7a7;
+  clip-path: polygon(12% 8%, 90% 4%, 100% 100%, 0% 100%);
+}
+
+#usersListFront {
+  position: absolute;
+  top: 5vh;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  height: 40vh;
+  width: 20%;
   clip-path: polygon(12% 8%, 90% 4%, 100% 100%, 0% 100%);
 }
 
@@ -116,6 +170,7 @@ export default {
   height: 5vh;
   top: 5vh;
   background: rgb(255, 254, 207);
+  filter: drop-shadow(20px 20px 20px rgba(0, 0, 0, 0.5));
 }
 #messagesList {
   position: absolute;
@@ -124,9 +179,9 @@ export default {
   height: 80%;
   width: 70%;
   right: 10px;
-  overflow-x: hidden;
+  overflow: hidden;
   color: #202020;
-  background: #ececec;
+  background: rgb(250, 250, 250);
   box-shadow: 10px 5px 5px rgb(150, 150, 150);
   clip-path: polygon(10% 5%, 90% 4%, 95% 100%, 5% 100%);
 }
@@ -138,7 +193,6 @@ export default {
   background: rgb(209, 255, 233);
   text-align: center;
   color: #202020;
-  box-shadow: 10px 5px 5px rgb(248, 248, 248);
   clip-path: polygon(2% 8%, 100% 0%, 98% 100%, 0% 95%);
 }
 
@@ -146,15 +200,15 @@ export default {
   position: absolute;
   display: flex;
   flex-direction: row;
-  top: 60vh;
+  top: 50vh;
   height: 25vh;
-  left: -200px;
+  left: -4vh;
   transform: rotate(20deg);
 }
 #rod {
   margin: auto;
   margin-left: 0;
-  width: 500px;
+  width: 400px;
   height: 2%;
   background: rgb(78, 78, 78);
 }
@@ -170,6 +224,9 @@ export default {
   border-radius: 50%;
   z-index: 1;
   border: 0;
+}
+#ball:focus {
+  outline: none;
 }
 
 @keyframes rotateLever {
